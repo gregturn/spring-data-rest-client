@@ -12,7 +12,7 @@ To talk to Spring Data REST, you essentially need a client configured for HAL. r
 
 You can either do a lot of reading, like I did, or simply use this module to get going right away.
 
-For an example of making REST calls, look at this snippet from the tests:
+For an example of making REST calls, look at this snippet inspired from the test cases:
 
 [source,javascript]
 ----
