@@ -1,0 +1,68 @@
+= Spring Data REST npm module
+
+This npm module isn't much. It's just a preconfigured way to talk to a Spring Data REST service via https://github.com/cujojs/rest[rest.js].
+
+== What is Spring Data REST?
+
+Please check out my slide show from SpringOne 2014, https://speakerdeck.com/gregturn/springone2gx-2014-spring-data-rest-data-meets-hypermedia[Spring Data REST: Data meets hypermedia]. It is a quick intro into what Spring Data REST offers.
+
+== What does this module have?
+
+To talk to Spring Data REST, you essentially need a client configured for HAL. rest.js provides this feature. It just takes a few extra steps to configure it.
+
+You can either do a lot of reading, like I did, or simply use this module to get going right away.
+
+For an example of making REST calls, look at this snippet from the tests:
+
+[source,javascript]
+----
+require('should');
+
+var sdr = require('sdr');
+
+sdr.restInvoker({method: 'GET', path: uriWithEmbeddedEmployees})
+	.then(function(response) {
+
+		response.status.code.should.equal(200);
+		response.headers['Content-Type'].should.equal('application/hal+json');
+
+		var employees = response.entity._embedded.employees;
+
+		employees
+			.should.be.an.Array
+			.and.have.lengthOf(1);
+
+		var employee = employees[0];
+
+		employee.firstName.should.equal('Bilbo');
+		employee.lastName.should.equal('Baggins');
+		employee.title.should.equal('thief');
+		employee._links
+			.should.be.an.Object
+			.and.have.property('self');
+	})
+----
+
+To navigate from a root URI through a chain of URIs, use this simple alternative:
+
+[source,javascript]
+----
+require('should');
+
+var sdr = require('sdr');
+
+sdr.follow(rootUri, ['employees', 'employees'])
+	.then(function(employees) {
+
+		employees.should.be.an.Array;
+		employees.should.have.lengthOf(1);
+		employees[0].firstName.should.equal('Bilbo');
+		employees[0].lastName.should.equal('Baggins');
+		employees[0].title.should.equal('thief');
+		employees[0]._links
+			.should.be.an.Object
+			.and.have.property('self');
+	})
+----
+
+This is the type of code you can write when talking to a HAL-based backend.
