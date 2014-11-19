@@ -1,7 +1,7 @@
 {
   "name": "sdr",
   "version": "2.3.0",
-  "description": "Preconfigured tools to speak to HAL-based Spring Data REST",
+  "description": "Tools needed to speak to HAL-based Spring Data REST",
   "keywords": [
     "hal",
     "hateoas",
@@ -16,14 +16,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/spring-projects/spring-data-rest.git"
+    "url": "https://github.com/gregturn/sdr.git"
   },
-  "bugs": "https://jira/spring.io",
+  "bugs": "https://github.com/gregturn/sdr/issues",
   "maintainers": [
     {
       "name": "Greg Turnquist",
-      "email": "gturnquist@pivotal.io",
-      "web": "http://spring.io/team/gturnquist"
+      "email": "greg.l.turnquist@gmail.com",
+      "web": "http://blog.greglturnquist.com"
     }
   ],
   "devDependencies": {
@@ -37,6 +37,7 @@
   "main": "./sdr",
   "scripts": {
     "start": "serv",
+    "test-harness": "mvn clean spring-boot:run",
     "test": "mocha"
   }
 }

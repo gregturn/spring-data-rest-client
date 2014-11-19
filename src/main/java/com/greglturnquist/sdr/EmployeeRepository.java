@@ -1,4 +1,4 @@
-package org.springframework.data.rest.npmjs;
+package com.greglturnquist.sdr;
 
 import org.springframework.data.repository.CrudRepository;
 
