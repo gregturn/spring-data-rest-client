@@ -16,8 +16,6 @@ For an example of making REST calls, look at this snippet inspired from the test
 
 [source,javascript]
 ----
-require('should');
-
 var sdr = require('sdr');
 
 sdr.restInvoker({method: 'GET', path: 'http://rest-app-in-five-minutes.cfapps.io/employees'})
