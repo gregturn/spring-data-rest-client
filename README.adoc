@@ -21,7 +21,7 @@ require('should');
 var sdr = require('sdr');
 
 sdr.restInvoker({method: 'GET', path: uriWithEmbeddedEmployees})
-	.then(function(response) {
+	.done(function(response) {
 
 		response.status.code.should.equal(200);
 		response.headers['Content-Type'].should.equal('application/hal+json');
@@ -43,6 +43,11 @@ sdr.restInvoker({method: 'GET', path: uriWithEmbeddedEmployees})
 	})
 ----
 
+Making REST calls using `restInvoker` returns an A+-compliant promise. This sample shows how to process the response.
+
+NOTE: The `should` clauses are part of should.js, and not part of this API. `should....` are simply assertions. But all
+the preceding code is pure rest.js.
+
 To navigate from a root URI through a chain of URIs, use this simple alternative:
 
 [source,javascript]
@@ -52,7 +57,7 @@ require('should');
 var sdr = require('sdr');
 
 sdr.follow(rootUri, ['employees', 'employees'])
-	.then(function(employees) {
+	.done(function(employees) {
 
 		employees.should.be.an.Array;
 		employees.should.have.lengthOf(1);
@@ -65,4 +70,8 @@ sdr.follow(rootUri, ['employees', 'employees'])
 	})
 ----
 
-This is the type of code you can write when talking to a HAL-based backend.
+This shortcuts the process of navigating through a collection of hypermedia relationships. You can opt to start
+from another URI, such as an order link found in an email, and navigate to something else.
+
+Frnakly, THIS is the type of code I prefer writing when talking to HAL-based backends. It sets things up for nice usage
+of https://github.com/cujojs/when[when.js] when writing async operations.
