@@ -79,7 +79,7 @@ sdr.follow('http://rest-app-in-five-minutes.cfapps.io', ['employees', 'employees
 
 What's the difference in using `follow` vs. `restInvoker`? `follow` shortcuts the process of navigating through a
 collection of hypermedia relationships. It moves your attention to the semantic relationship between URIs. The first
-example where you saw `restInvoker showed only one `GET`. To start at the root URI and hop along a chain would require
+example where you saw `restInvoker` showed only one `GET`. To start at the root URI and hop along a chain would require
 repeating that process over and over.
 
 This comes in handy when you start to navigate different relationships. The example above started with the root URI.
