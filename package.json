@@ -1,0 +1,42 @@
+{
+  "name": "sdr",
+  "version": "2.3.0",
+  "description": "Preconfigured tools to speak to HAL-based Spring Data REST",
+  "keywords": [
+    "hal",
+    "hateoas",
+    "rest",
+    "spring data rest"
+  ],
+  "licenses": [
+    {
+      "type": "ASL 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spring-projects/spring-data-rest.git"
+  },
+  "bugs": "https://jira/spring.io",
+  "maintainers": [
+    {
+      "name": "Greg Turnquist",
+      "email": "gturnquist@pivotal.io",
+      "web": "http://spring.io/team/gturnquist"
+    }
+  ],
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "serv": "0.0.7",
+    "should": "^4.3.0"
+  },
+  "dependencies": {
+    "rest": "^1.2.0"
+  },
+  "main": "./sdr",
+  "scripts": {
+    "start": "serv",
+    "test": "mocha"
+  }
+}
