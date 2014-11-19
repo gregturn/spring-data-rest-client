@@ -44,7 +44,8 @@ sdr.restInvoker({method: 'GET', path: 'http://rest-app-in-five-minutes.cfapps.io
 	})
 ----
 
-Making REST calls using `restInvoker` returns an A+-compliant promise. This sample shows how to process the response.
+Making REST calls using `restInvoker` returns an https://promisesaplus.com/[A+-compliant promise]. This sample shows
+how to process the response.
 
 To navigate from a root URI through a chain of URIs, use this simple alternative:
 
