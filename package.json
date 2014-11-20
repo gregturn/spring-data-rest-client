@@ -37,7 +37,6 @@
   "main": "./sdr",
   "scripts": {
     "start": "serv",
-    "test-harness": "mvn clean spring-boot:run",
-    "test": "mocha"
+    "test": "./start-test-harness.bash && mocha"
   }
 }

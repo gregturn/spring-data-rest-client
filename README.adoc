@@ -12,6 +12,8 @@ To talk to Spring Data REST, you essentially need a client configured for HAL. r
 
 You can either do a lot of reading, like I did, or simply use this module to get going right away.
 
+=== Using `restInvoker`
+
 For an example of making REST calls, look at this snippet inspired from the test cases:
 
 [source,javascript]
@@ -46,6 +48,43 @@ sdr.restInvoker({method: 'GET', path: 'http://rest-app-in-five-minutes.cfapps.io
 
 Making REST calls using `restInvoker` returns an https://promisesaplus.com/[A+-compliant promise]. This sample shows
 how to process the response.
+
+Want to create something via `POST`?
+
+[source,javascript]
+----
+sdr.restInvoker({
+	method: 'POST',
+	path: employeesUri,
+	entity: {
+		firstName: 'Frodo',
+		lastName: 'Baggins',
+		title: 'ring bearer'
+	},
+	headers: {'Content-Type': 'application/json'}
+}).then(function(response) {
+
+	console.log(response.status.code); // should be 201
+	console.log(response.headers['Location']); // should contain URI for new resource
+
+	return sdr.restInvoker({
+		method: 'GET',
+		path: response.headers['Location']
+	});
+}).done(function(employee) {
+
+	console.log(employee.firstName); // should be Frodo
+	console.log(employee.lastName); // should be Baggins
+	console.log(employee.title); // should be ring bearer
+});
+----
+
+See how this nice, promise-based API lets you chain together operations without getting mired in ugly callbacks?
+
+=== Using `follow` to get out URIs and into semantic relationships
+
+`restInvoker` is real handy for doing URI-based ops. You saw how to *GET* and *POST* quite smoothly. But is that
+what we want to be doing when navigating hypermedia?
 
 To navigate from a root URI through a chain of URIs, use this simple alternative:
 

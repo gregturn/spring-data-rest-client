@@ -6,7 +6,7 @@ require('should');
 
 var sdr = require('../sdr');
 
-var rootUri = 'http://rest-app-in-five-minutes.cfapps.io';
+var rootUri = 'http://localhost:9999'
 
 describe('SpringDataREST', function() {
 
@@ -39,6 +39,52 @@ describe('SpringDataREST', function() {
 					employee._links
 						.should.be.an.Object
 						.and.have.property('self');
+				})
+		})
+		it('should create a new entry', function() {
+			return sdr.restInvoker({method: 'GET', path: rootUri})
+				.then(function(response) {
+
+					response.status.code.should.equal(200);
+					response.headers['Content-Type'].should.equal('application/hal+json');
+
+					return sdr.restInvoker({
+						method: 'POST',
+						path: response.entity._links.employees.href,
+						entity: {
+							firstName: 'Frodo',
+							lastName: 'Baggins',
+							title: 'ring bearer'
+						},
+						headers: {'Content-Type': 'application/json'}
+					});
+				}).then(function(response) {
+
+					response.status.code.should.equal(201);
+					response.headers.should.have.property('Location')
+
+					return sdr.restInvoker({
+						method: 'GET',
+						path: response.headers['Location']
+					});
+				}).then(function(response) {
+
+					response.status.code.should.equal(200);
+					response.headers['Content-Type'].should.equal('application/hal+json');
+					response.entity.firstName.should.equal('Frodo');
+					response.entity.lastName.should.equal('Baggins');
+					response.entity.title.should.equal('ring bearer');
+					response.entity._links
+						.should.be.an.Object
+						.and.have.property('self');
+
+					return sdr.restInvoker({
+						method: 'DELETE',
+						path: response.entity._links.self.href
+					})
+				}).then(function(response) {
+
+					response.status.code.should.equal(204);
 				})
 		})
 	})

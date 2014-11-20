@@ -65,7 +65,7 @@ public class Application {
 		return "Shutting down";
 	}
 
-	@Scheduled(fixedDelay = 1L, initialDelay = 100000L)
+	@Scheduled(fixedDelay = 1L, initialDelay = 30000L)
 	private void shutdownAfterCertainTime() {
 		log.info("Time expired. Deadman switch shutting things down.");
 		context.close();
