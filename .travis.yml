@@ -8,6 +8,6 @@ cache:
   - $HOME/.m2
 
 script:
-  - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then mvn test ; fi'
+  - mvn test
 
 sudo: false
