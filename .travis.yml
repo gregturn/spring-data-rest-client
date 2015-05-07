@@ -7,10 +7,13 @@ cache:
   directories:
   - $HOME/.m2
 
+before_install:
+- npm install -g mocha
+
 script:
-  - npm test
+- npm test
 
 after_script:
-  - sleep 10
+- sleep 10
 
 sudo: false
