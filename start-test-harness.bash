@@ -1,4 +1,4 @@
 #!/bin/bash
 
 mvn spring-boot:run &
-sleep 25
+sleep 35
