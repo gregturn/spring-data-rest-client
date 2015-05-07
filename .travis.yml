@@ -8,12 +8,13 @@ cache:
   - $HOME/.m2
 
 before_script:
-- ./start-test-harness.bash
+  - mvn spring-boot:run &
+  - sleep 15
 
 script:
-- mocha
+  - mocha
 
 after_script:
-- sleep 10
+  - sleep 10
 
 sudo: false
