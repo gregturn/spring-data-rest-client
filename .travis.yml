@@ -7,12 +7,8 @@ cache:
   directories:
   - $HOME/.m2
 
-before_script:
-  - mvn spring-boot:run &
-  - sleep 15
-
 script:
-  - mocha
+  - npm test
 
 after_script:
   - sleep 10
