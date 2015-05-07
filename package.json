@@ -1,7 +1,8 @@
 {
   "name": "sdr",
   "version": "2.3.0",
-  "description": "Tools needed to speak to HAL-based Spring Data REST",
+  "description": "Tools needed to speak to HAL-based Spring Data REST services",
+  "homepage": "http://projects.spring.io/spring-data-rest-client",
   "keywords": [
     "hal",
     "hateoas",
@@ -22,7 +23,7 @@
   "maintainers": [
     {
       "name": "Greg Turnquist",
-      "email": "greg.l.turnquist@gmail.com",
+      "email": "gturnquist@pivotal.io",
       "web": "http://blog.greglturnquist.com"
     }
   ],

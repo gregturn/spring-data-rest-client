@@ -8,13 +8,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Spring Data REST - JavaScript</name>
-	<description>JavaScript module to talk to Spring Data REST backend</description>
+	<name>Spring Data REST - Client</name>
+	<description>JavaScript module to talk to a Spring Data REST backend</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.1.9.RELEASE</version>
+		<version>1.2.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 

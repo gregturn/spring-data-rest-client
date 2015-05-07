@@ -16,14 +16,14 @@ describe('SpringDataREST', function() {
 				.then(function(response) {
 
 					response.status.code.should.equal(200);
-					response.headers['Content-Type'].should.equal('application/hal+json');
+					response.headers['Content-Type'].should.equal('application/hal+json;charset=UTF-8');
 
 					return sdr.restInvoker({method: 'GET', path: response.entity._links.employees.href});
 
 				}).then(function(response) {
 
 					response.status.code.should.equal(200);
-					response.headers['Content-Type'].should.equal('application/hal+json');
+					response.headers['Content-Type'].should.equal('application/hal+json;charset=UTF-8');
 
 					var employees = response.entity._embedded.employees;
 
@@ -46,7 +46,7 @@ describe('SpringDataREST', function() {
 				.then(function(response) {
 
 					response.status.code.should.equal(200);
-					response.headers['Content-Type'].should.equal('application/hal+json');
+					response.headers['Content-Type'].should.equal('application/hal+json;charset=UTF-8');
 
 					return sdr.restInvoker({
 						method: 'POST',
@@ -70,7 +70,7 @@ describe('SpringDataREST', function() {
 				}).then(function(response) {
 
 					response.status.code.should.equal(200);
-					response.headers['Content-Type'].should.equal('application/hal+json');
+					response.headers['Content-Type'].should.equal('application/hal+json;charset=UTF-8');
 					response.entity.firstName.should.equal('Frodo');
 					response.entity.lastName.should.equal('Baggins');
 					response.entity.title.should.equal('ring bearer');

@@ -1,4 +1,4 @@
-= Spring Data REST npm module
+= Spring Data REST npm module image:https://travis-ci.org/gregturn/sdr.svg["Build Status", link="https://travis-ci.org/gregturn/sdr"]
 
 This npm module isn't much. It's just a preconfigured way to talk to a Spring Data REST service via https://github.com/cujojs/rest[rest.js].
 
